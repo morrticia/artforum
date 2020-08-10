@@ -1,0 +1,7 @@
+.idea/
+__pycache__/
+.*pyc
+venv/
+  git config --global user.email "nino.darsavelidze.3@iliauni.edu.ge"
+    git config --global user.name "mrticia"
+

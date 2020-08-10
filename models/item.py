@@ -4,7 +4,7 @@ from db import db
 class ItemModel(db.Model):
     __tablename__ = 'collection'
 
-    artist = db.Column(db.String, primary_key=True)
+    artist = db.Column(db.Integer, primary_key=True)
     artwork = db.Column(db.String)
     year = db.Column(db.String)
 

@@ -1,11 +1,12 @@
 from db import db
 import shortuuid
+import uuid
 
 
 class UserModel(db.Model):
     __tablename__ = "users"
 
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.String, primary_key=True)
     username = db.Column(db.String)
     password = db.Column(db.String)
 
@@ -14,6 +15,10 @@ class UserModel(db.Model):
         self.username = username
         self.password = password
 
+    @classmethod
+    def idgenerator(cls):
+        cls._id = uuid.uuid4().node
+        return cls._id
 
     @classmethod
     def find_by_username(cls, username):

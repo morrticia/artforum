@@ -9,7 +9,7 @@
 #                   "somewhat uneasy calm and a slightly dismal tone. This particular house stands small against "
 #                   "the nature surrounding it. It is pressed on by the outer registers, blocked by a tree, and "
 #                   "dwarfed by a forest to the right. Considering these themes, it is worth noting that this painting "
-#                   "sold at Christie's this past May for $11.9 million.",
+#                   "sold at Christie'resources this past May for $11.9 million.",
 #
 #     },
 #     {

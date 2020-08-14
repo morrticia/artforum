@@ -17,7 +17,7 @@ api = Api(app)
 
 @app.route('/')
 def redirecturl():
-    return redirect('https://github.com/cybermachvi/unilab-project')
+    return redirect('https://documenter.getpostman.com/view/11843891/T1LPD7Ki?version=latest')
 
 
 api.add_resource(Item, "/artwork/<string:name>")

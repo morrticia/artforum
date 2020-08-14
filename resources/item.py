@@ -70,4 +70,3 @@ class Item(Resource):
             return {'message': f'{name} is deleted'}
         else:
             return {'message': f'We could not find {name}'}
-

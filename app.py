@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, redirect
 from flask_restful import Api
 from flask_jwt import JWT
 
@@ -15,15 +15,19 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 jwt = JWT(app, authentication, identity)
 api = Api(app)
 
+@app.route('/')
+def redirecturl():
+    return redirect('https://github.com/cybermachvi/unilab-project')
+
+
 api.add_resource(Item, "/artwork/<string:name>")
 api.add_resource(Items, "/artworks")
 api.add_resource(Account, "/registration")
 
 
-@app.before_first_request
-def create_tables():
-    db.create_all()
-
+# @app.before_first_request
+# def create_tables():
+#     db.create_all()
 
 if __name__ == "__main__":
     from db import db

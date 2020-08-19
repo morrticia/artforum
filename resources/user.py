@@ -1,6 +1,6 @@
-import sqlite3
 from flask_restful import Resource, reqparse
 from models.user import UserModel
+from flask_jwt import jwt_required
 
 
 class Account(Resource):
@@ -14,7 +14,10 @@ class Account(Resource):
                         required=True,
                         location='json',
                         help="Enter password")
-    TABLE = "users"
+
+    @jwt_required()
+    def get(self):
+        return {"message": "Signed In"}
 
     def post(self):
         try:
@@ -32,6 +35,7 @@ class Account(Resource):
             except:
                 return {"message": "Sign up not possible"}
 
+
     def delete(self):
         try:
             userdata = Account.parser.parse_args()
@@ -45,3 +49,4 @@ class Account(Resource):
                 return {"message": "Could not delete this account"}
         else:
             return {"message": "Could not find this account"}
+

@@ -26,6 +26,17 @@ class Item(Resource):
                         location='json',
                         help="Enter the year")
 
+    parser.add_argument('category',
+                        required=True,
+                        location='json',
+                        help="Enter the category")
+
+    parser.add_argument('review',
+                        required=True,
+                        location='json',
+                        help="Enter review")
+
+
     def get(self, name):
         item = ItemModel.find_by_name(name)
         if item:
@@ -40,8 +51,7 @@ class Item(Resource):
             data = Item.parser.parse_args()
         except Exception as e:
             return {'message': e}
-
-        item = ItemModel(name, data['artist'], data['year'])
+        item = ItemModel(data['artist'], name,  data['year'], data['category'], data['review'])
         try:
             item.save_to_db()
             return {'message': f'{name} has been added to collection'}, 400
@@ -57,8 +67,10 @@ class Item(Resource):
         if item:
             item.year = data['year']
             item.artist = data['artist']
+            item.category = data['category']
+            item.review = data['review']
         else:
-            item = ItemModel(name, data['artist'], data['year'])
+            item = ItemModel(data['artist'], name, data['year'], data['category'], data['review'])
 
         item.save_to_db()
         return {'Item from collection: ': item.json()}
